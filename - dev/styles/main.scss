@@ -4,6 +4,10 @@
 
 @import "_misc/normalize";
 
+/* --------- fonts --------- */
+
+@import "_misc/_fonts";
+
 /* --------- mixins --------- */
 
 @import "_misc/mixins";
@@ -12,4 +16,14 @@
 
 @import "_misc/adjustment";
 
+/* --------- misc icons sprite --------- */
 
+$misc-sprite: sprite-map('icons/socials/*.png', $spacing: 70px);
+
+/* --------- common colors --------- */
+
+$black: #333333;
+
+/* --------- sections --------- */
+
+@import "_sections/_header";

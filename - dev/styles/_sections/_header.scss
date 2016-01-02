@@ -32,7 +32,7 @@
 }
 
 $socials: fb, vk, tw;
-$socials-map: sprite-map('icons/socials/*.png', $spacing: 70px);
+$socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizontal);
 
 @each $social in $socials {
 	.socials__item_#{$social} {
@@ -48,13 +48,13 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px);
 }
 
 .header__right {
-	width: 50%;
+	width: 483px;
 	float: right;
 }
 
 .address {
 	@include inlineblock(middle);
-	margin-right: 65px;
+	margin-right: 86px;
 
 	&:before {
 		content: '';
@@ -68,7 +68,6 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px);
 	@include inlineblock(middle);
 	color: $black;
 	text-decoration: none;
-	margin-right: 25px;
 
 	&:before {
 		content: '';
@@ -76,4 +75,77 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px);
 		margin-right: 12px;
 		@include get-sprite($misc-sprite, phone);
 	}
+}
+
+/*--------------Header - bottom ------------------*/
+
+.header__bottom {
+	background: #f4f4f4;
+	padding: 29px 0;
+}
+
+.logo {
+	float: left;
+}
+
+.logo__img {
+	display: block;
+	max-width: 250px
+}
+
+.logo__text {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+}
+
+.search {
+	float: left;
+	margin-right: 48px;
+	margin-left: 50px;
+}
+
+.menu {
+	float: left;
+	padding-top: 8px;
+}
+
+.menu__link {
+	font-size: 16px;
+	line-height: 18px;
+	color: $black;
+	@include open-sans(semibold);
+	
+	&:hover {
+		color: $orange;
+	}
+}
+
+.menu__item {
+	@include inlineblock();
+	margin-left: 28px;
+
+	&:first-child {
+		margin-left: 0;
+	}
+}
+
+.search__form-input {
+	border: 1px solid #dee1ed;
+	@include border-radius(5px 0 0 5px);
+	padding: 7px 15px;
+	width: 259px;
+	margin-right: -7px;
+	outline: none;
+}
+
+.search__form-submit {
+	width: 79px;
+	height: 34px;
+	background: $orange;
+	color: #ffffff;
+	@include open-sans(semibold);
+	@include border-radius(0 5px 5px 0);
+	border: 1px solid $orange;
+	padding-top: 0;
 }

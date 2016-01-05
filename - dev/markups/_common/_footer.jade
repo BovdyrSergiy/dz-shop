@@ -3,16 +3,16 @@ footer.footer
 		.container
 			.footer__left
 				a(href="#").logo.logo_footer
-					img(src="" alt="cooltech logo").logo__img
+					img(src="img/logos/logo-white.png" alt="cooltech logo").logo__img
 					.logo__text cooltech
 			.footer__right
-				ul.socials.footer_socials
-					- var item = ["fb", "vk", "tw"]
+				ul.socials.socials_footer
+					- var items = ["fb", "vk", "tw"]
 					each item in items
 						li(class="socials__item socials__item_" + item)
 							a(href="#").socials__link
 				ul.footer__nav
-					- var items = ["Планшеты", "Мобильные телефоны", "Мр3 плееры", "Персональные компьютеры", "Аксессуары", "Бытовая техника"]
+					- var items = ["Планшеты", "Мобильные телефоны", "Мр3 плееры", "Персональные компьютеры", "Ноутбуки", "Аксессуары", "Бытовая техника"]
 					each item in items
 						li.footer__nav-item
 							a(href="#").footer__nav-link= item

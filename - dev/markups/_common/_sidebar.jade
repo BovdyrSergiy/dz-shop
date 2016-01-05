@@ -45,7 +45,7 @@
 							.filter__slider-right
 								.filter__slider-text до
 								input(name="" type="text" placeholder="").filter__slider-input.filter__slider-input_to
-						.filter__slider-element
+						div(class="filter__slider-element" data-min="0" data-max="30000")
 			li.filter__item
 				.filter__title
 					a(href="#").filter__title-link Цвет
@@ -59,12 +59,12 @@
 				.filter__title
 					a(href="#").filter__title-link Операционная система
 				.filter__content
-					ul.filter__choose.filter__choose_chackboxes
+					ul.filter__choose.filter__choose_checkboxes
 						- var items = ["Android", "IOs", "Symbian", "Windows Mobile", "Custom"]
 						each item in items
 							li.filter__choose-item
 								label.filter__choose-label
-									input(name="location" type="radio").filter__choose-input
+									input(name="" type="checkbox").filter__choose-input
 									.filter__choose-elem
 									.filter__choose-text= item
 					.filter__reset--wrap

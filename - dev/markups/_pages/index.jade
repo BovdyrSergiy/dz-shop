@@ -9,13 +9,89 @@ block content
 			.main-title
 				| Мобильные телефоны
 			.main-content
-				.sidebar
 
-					include ../_common/_sidebar
+				include ../_common/_sidebar
 
-					.content
-						.sort
-						.products
+				.content
+					.sort
+						.sort__left
+							.sort__select--wrap
+								.sort__title
+									| Сортировать по
+								.sort__select
+									select.sort__select-elem
+										- var options = ["по цене", "по популярности"]
+										each option in options
+											option(value="")= option
+						.sort__right
+							.sort__title
+								| Вид каталога
+							.sort__view
+								ul.sort__view-list
+									- var items = ['rows', 'grids', 'lines']
+									each item in items
+										li(class="sort__view-item sort__view_" + item data-view= item)
+											a(href="#").sort__view-link
+												.sort__view-icon
+					.products
+						ul.products__list#products-list
+							- for (var i = 0; i < 9; i++)
+								li.products__item
+									.products__item-inner
+										.products__left
+											.products__slideshow
+												.products__slideshow-block
+													a(href="#").products__slideshow-display
+														img(src="img/userfiles/1.jpg" alt="").products__slideshow-img
+													ul.products__slideshow-thumbs
+														- for (var j = 1; j < 4; j++)
+															li.products__slideshow-item
+																a(href="#").products__slideshow-link
+																	img(src="img/userfiles/" + j + ".jpg" alt="").products__slideshow-thumb-img
+												.products__article
+													.products__article-word Артикул
+													.products__article-num 189238
+											.products__desc
+												.products__desc-title Samsung GT-I9300 Galaxy S3
+												.products__desc-text
+													| Смартфон Samsung GT-I9300 Galaxy S3 Ceramic Blue, Моноблок, Micro-SIM, Android 4.4, 3G, Bluetooth 4.0, EDGE, GPRS, WAP, Wi-Fi, Количество ядер процессора 4, Частота процессора 1400 МГц...
+												ul.products__desc-options
+													- var options = {"Тип SIM-карты": "Micro-SIM", "Количество SIM-карт": "1", "Цвет": "Тёмно синий", "ОС": "Android", "Связь 3G": "Есть", "4G (LTE)": "Нет", "GPS-модуль": "Есть"}
+													- var index = 0;
+													- for (item in options)
+														li(class="products__options-item" + (!(index++ % 2) ? ' products__options-item_colored' : ''))
+															.products__options-key= item
+															.products__options-value= options[item]
+												div(class="products__rating" data-rating="4")
+													ul.products__rating-stars
+														li.products__rating-stars-item.products__rating-stars-item_filled
+														li.products__rating-stars-item.products__rating-stars-item_filled
+														li.products__rating-stars-item.products__rating-stars-item_filled
+														li.products__rating-stars-item.products__rating-stars-item_filled
+														li.products__rating-stars-item
+													.products__rating-amount 4
+										.products__right
+											.products__info
+												.products__price 11 290
+													i.rub
+											.products__info-bottom
+												a(href="#").products__buy-btn В корзину
+												.products__availability
+													| В наличии
+					.pagination
+						ul.pagination__list
+							li.pagination__item.pagination__item_prev
+								a(href="#").pagination__link
+									.pagination__mark
+							- for (var i = 1; i < 4; i++)
+								li.pagination__item
+									a(href="#").pagination__link
+										.pagination__mark= i
+							li.pagination__item.pagination__item_next
+								a(href="#").pagination__link
+									.pagination__mark
+
+
 			.attension
 				.main-title
 					| Важная информация

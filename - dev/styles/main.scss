@@ -7,7 +7,7 @@
 /* --------- fonts --------- */
 
 @import "_misc/_fonts";
-@import "_misc/font";
+// @import "_misc/font";
 /* --------- mixins --------- */
 
 @import "_misc/mixins";
@@ -26,10 +26,15 @@ $black: #333333;
 $orange: #ff6600;
 $grey: #dee1e4;
 
+/* --------- plugins --------- */
+
+@import "_plugins/**/*";
+
+/* --------- widgets --------- */
+
+@import "_widgets/**/*";
+
 /* --------- sections --------- */
 
 @import "_sections/**/*";
-// @import "_sections/_header";
-// @import "_sections/_nav";
-// @import "_sections/_breadcrumbs";
-// @import "_sections/_content";
+

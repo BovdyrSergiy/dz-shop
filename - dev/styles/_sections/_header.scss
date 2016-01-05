@@ -37,7 +37,18 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 @each $social in $socials {
 	.socials__item_#{$social} {
 		.socials__icon {
-			@include get-sprite($socials-map, $social);
+			&:after {
+				@include get-sprite($socials-map, $social);
+				content: "";
+				@include absolute-center;
+			}
+
+			&:hover {
+				&:after {
+					$icon-name: $social + '-hover';
+					@include get-sprite($socials-map, $icon-name);
+				}					
+			}
 		}
 	}
 }
@@ -54,7 +65,9 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 
 .address {
 	@include inlineblock(middle);
-	margin-right: 86px;
+	margin-right: 80px;
+	font-size: 14px;
+	line-height: 24px;
 
 	&:before {
 		content: '';
@@ -68,6 +81,10 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 	@include inlineblock(middle);
 	color: $black;
 	text-decoration: none;
+	font-size: 18px;
+	line-height: 24px;
+	@include open-sans(semibold);
+
 
 	&:before {
 		content: '';

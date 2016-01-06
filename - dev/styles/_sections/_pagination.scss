@@ -28,6 +28,25 @@
 	&:hover {
 		background: #e0e0e0;
 	}
+
+	&.active {
+		background: #e0e0e0;
+	}
+}
+
+.pagination__link-pointer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: block;
+	background: #fff;
+
+	&:hover {
+		background: #e0e0e0;
+	}
+
 }
 
 .pagination__mark {

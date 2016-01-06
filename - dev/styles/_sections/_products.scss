@@ -75,10 +75,15 @@
 	height: 34px;
 	@include border-radius(3px);
 	margin-bottom: 0;
-	position: relative;
+	position: relative;	
 
 	&:hover {
 		border-color: $orange;
+	}
+
+	&.active {
+		border-color: $orange;
+		outline: none;
 	}
 }
 

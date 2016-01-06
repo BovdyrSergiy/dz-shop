@@ -20,7 +20,7 @@ body {
 .container {
   margin: 0 auto;
   position: relative;
-  padding: 0 15px;
+  padding: 0;
   width: $container-width;
 	@include clearfix;
 }
@@ -68,5 +68,5 @@ footer {
 }
 
 .maincontent {
-	margin-bottom: 29px;
+	margin-bottom: 10px;
 }

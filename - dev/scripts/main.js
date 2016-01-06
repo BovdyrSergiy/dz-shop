@@ -1,166 +1,191 @@
-  // -----------Выбор цены --------------- //
-var SliderWidget = (function(){
+var myModule = (function () {
 
-	var _insertValues = function($this){
-		var
-			container = $this.closest('.filter__slider'),
-			from = container.find('.filter__slider-input_from'),
-			to = container.find('.filter__slider-input_to');
+	var init = function () {
+		_setLowPricePhone();
+		_downCheckBox();
+		_setPriceSlider();
+		_setColorPhone();
+		_setUpImage();
+		_setPagination();
+		_setColum();
+		_setGridiLine();
+		_setAccordeon();
+	};
 
-		var values = $this.slider('option', 'values');
+  // ------- Переключение флагман/бюджет --------//
 
-			from.val(values[0]);
-			to.val(values[1]);
+	var _setLowPricePhone = function () {
+
+		$(function(){
+		  $(".categories__item").on('click', function(e) {
+		    e.preventDefault();
+		    $(".categories__item").removeClass('active');
+		    $(this).addClass('active');
+		  })
+		});
 	}
 
-	var init = $('.filter__slider-element').each(function(){
-		var 
-			$this = $(this),
-			min = parseInt($this.data('min')),
-			max = parseInt($this.data('max'));
+	 // -------------Cброс чекбоксов --------------//
 
-		$this.slider({
-		  range: true,
-		  min: min,
-		  max: max,
-		  values: [min, max],
-		  slide: function() {
-		    _insertValues($this);
-		  },
-		  create: function(){
-		  	_insertValues($this);
-		  }
-		});					
-	});
+	var _downCheckBox = function () {
+		$('.filter__reset').on('click', function(e){
+			e.preventDefault();		
+			var	$this = $(this),
+					container = $this.closest('.filter__item'),
+					checkboxes = container.find('input:checkbox');
+				checkboxes.each(function(){
+					$(this).removeProp('checked');
+				});
+		});
+	}
 
-	return {
-		init: init
-	};
-})();
+	// -----------Выбор цены --------------- //
 
-  // ------------------Селект------------------- //
+	var _setPriceSlider = function () {
+	
+		var _insertValues = function($this){
+			var container = $this.closest('.filter__slider'),
+					from = container.find('.filter__slider-input_from'),
+					to = container.find('.filter__slider-input_to');
+
+			var values = $this.slider('option', 'values');
+
+				from.val(values[0]);
+				to.val(values[1]);
+		}
+		
+		$('.filter__slider-element').each(function(){
+			var $this = $(this),
+					min = parseInt($this.data('min')),
+					max = parseInt($this.data('max'));
+
+			$this.slider({
+			  range: true,
+			  min: min,
+			  max: max,
+			  values: [min, max],
+			  slide: function() {
+			    _insertValues($this);
+			  },
+			  create: function(){
+			  	_insertValues($this);
+			  }
+			});					
+		});
+  }
+
+  // -----------Выбор цвета Телефона------------//
+
+	var _setColorPhone = function () {
+		$('.filter__colors-item').on('click', function(e){
+			e.preventDefault();
+			$(this).toggleClass('filter__colors-item-active');	
+		});
+	}
 
 
+ // ------------ Слайдшоу --------------//
 
+	var _setUpImage = function () {
+		$('.products__slideshow-item').on('click', function(e) {
+			e.preventDefault();
+			var element = $(this),
+					preview = element.find('.products__slideshow-thumb-img'),
+					src = preview.attr('src'),
+					gallery = element.closest('.products__slideshow'),
+					img = gallery.find('.products__slideshow-img');
+			img.attr('src', src);	
+		});
+		$(function(){
+		  $(".products__slideshow-link").on('click', function(e) {
+		    e.preventDefault();
+		    $(".products__slideshow-link").removeClass('active');
+		    $(this).addClass('active');
+		  })
+		});
+	}
 
+	// ------- Переключение страниц --------//
 
+	var _setPagination = function () {
+		$(function(){
+		  $(".pagination__link").on('click', function(e) {
+		    e.preventDefault();
+		    $(".pagination__link").removeClass('active');
+		    $(this).addClass('active');
+		  })
+		});
+	}
+
+  // -------------- Columnizer ---------------//
+
+	var _setColum = function () {
+		$('.attension__text').columnize({
+			width: 530
+		});
+	}
+
+ // -------------- Accordeon --------------//
+
+	var _setAccordeon = function () {
+		$(document).ready(function(){
+			$('.filter__title').on('click', function(e) {
+				e.preventDefault();
+				var $this = $(this),
+						content = $this.closest('.filter__item').find('.filter__content');
+				if (content.hasClass('closed')) {
+					content.removeClass('closed').stop(true, true).slideDown(300);
+					$this.removeClass('active');
+				} else {
+					content.slideUp(300).addClass('closed');
+					$this.addClass('active');
+				}
+			});
+		});
+	}
 
 
   // -----------Переключение вида--------------- //
 
-// var ViewStateChange =(function(){
-	
-// 	var _previousClass = '';
-
-// 	var _changeState = function($this){
-// 		var 
-// 			item = $this.closest('.sort__view-item'),
-// 			view = item.data('view'),
-// 			listOfItems = $('#products-list'),
-// 			modificationPrefix = 'products__list_',
-// 			classOfViewState = modificationPrefix + view;
-
-// 		if (_previousClass == '') {
-// 			_previousClass.listOfItems.attr('class');
-// 		}
-
-// 		_changeActiveClass($this);
-// 		listOfItems.attr('class', _previousClass + '' + classOfViewState);
-// 	};
-
-// 	var _changeActiveClass = function($this){
-// 		$this.closest('.sort__view-item').addClass('active');			
-// 		$this.siblings().removeClass('active');
-// 	}
-
-// 	return {
-// 		init: function(){
-// 			$('.sort__view-link').on('click', function(e){
-// 				e.preventDefault();
-// 				_changeState($(this));
-// 			});
-// 		}
-// 	}
-
-// }());
-
-  // -------------Cлайдшоу --------------//
-
-// var Slideshow = (function(){
-	
-// 	var _changeSlide = function($this){
-// 		var container = $this.closest('.products__slideshow'),
-// 				path = $this.find('img').attr('src'),
-// 				display = container.find('.products__slideshow-img');
-
-// 		display.fadeOut(function() {
-// 			$(this).attr('src', path).fadeIn();
-// 		});
-// 	}
-
-// 	return {
-// 		init: function(){
-// 			$('.products__slideshow-link').on('click', function(e){
-// 				e.preventDefault();
-				
-// 				var 
-// 						$this = $(this);
-
-// 				_changeSlide($this);
-
-// 			});
-// 		}
-// 	}
-// }());
-
-
-
-
-$(document).ready(function(){
-	
-	
-	// ViewStateChange.init();
-
-
-	// if($('.products__slideshow').lenght) {
-	// 	 Slideshow.init();
-	// }
-
-
-	if($('.filter__slider-element').lenght) {
-		 SliderWidget.init();
-	}
-
-
-	if($('.sort__select-elem').lenght) {
-		 $('.sort__select-elem').select2({
-		 	minimumResultsForSearch: Infinity		 	
-		 });
-	}
-
-
-  // -------------Cброс чекбоксов --------------//
-
-$('.filter__reset').on('click', function(e){
-	e.preventDefault();		
-	var	$this = $(this),
-			container = $this.closest('.filter__item'),
-			checkboxes = container.find('input:checkbox');
-		checkboxes.each(function(){
-			$(this).removeProp('checked');
+  var _setGridiLine = function(){
+		$('.sort__view-link').on('click', function(e){
+			e.preventDefault();
+			_changeState($(this));
 		});
-	});
-});
+	}
 
-  // -----------Выбор цвета sidebar------------//
+	var _previousClass = '';
 
-$('.filter__colors-item').on('click', function(e){
-	e.preventDefault();
-	$(this).toggleClass('filter__colors-item-active');	
-});
+ 	var _changeState = function($this){
+ 		var 
+ 			item = $this.closest('.sort__view-item'),
+ 			view = item.data('view'),
+ 			listOfItems = $('#products-list'),
+ 			modificationPrefix = 'products__list_',
+ 			classOfViewState = modificationPrefix + view;
 
-  // -------------- Columnizer ---------------//
+ 		if (_previousClass == '') {
+ 			_previousClass.listOfItems.attr('class');
+ 		}
 
-$('.attension__text').columnize({
-	width: 530
-});
+ 		_changeActiveClass($this);
+ 		listOfItems.attr('class', _previousClass + '' + classOfViewState);
+ 	};
+
+ 	var _changeActiveClass = function($this){
+ 		$this.closest('.sort__view-item').addClass('active');			
+ 		$this.siblings().removeClass('active');
+ 	}
+
+
+ // -------------- End myModule --------------//
+
+
+
+	return {
+		init: init
+	};
+
+})();
+
+myModule.init();

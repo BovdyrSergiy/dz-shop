@@ -25,7 +25,12 @@
 		.categories__link {
 			background: #d9e5ea;
 			color: #5d656c;
+			outline: none;
 		}		
+	}
+	&:hover {
+			background: #d9e5ea;
+			color: #5d656c;
 	}
 }
 
@@ -195,14 +200,15 @@
 	&:hover {
 		border-color: $orange;
 	}
-}
 
-.filter__colors-item-active {
-	border-color: $orange;
+	&.filter__colors-item-active {
+		border-color: $orange;
+	}
 }
 
 .filter__colors {
 	margin-left: -10px;
+	width: 240px;
 }
 
 /* -------------- slider ----------------- */
@@ -234,3 +240,10 @@
 	font-size: 14px;
 	line-height: 16px;
 }
+
+ // -------------- Accordeon --------------//
+
+// .filter__content {
+// 	display: none;
+// }
+

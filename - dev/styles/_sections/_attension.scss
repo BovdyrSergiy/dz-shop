@@ -3,16 +3,27 @@
 		font-size: 14px;
 		line-height: 20px;
 		color: $black;
-		margin-bottom: 20px;
+		padding-bottom: 20px;
+		text-align: justify;
+		text-indent: 35px;
 	}
 
 	.column {
 		&.first {
 			float: left !important;
+
+			p {
+				padding-right: 19px;
+			}
 		}
 
 		&.last {
 			float: right !important;
+
+			p {
+				padding-left: 19px;
+			}
+
 		}
 	}
 }

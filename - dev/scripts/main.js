@@ -8,8 +8,9 @@ var myModule = (function () {
 		_setUpImage();
 		_setPagination();
 		_setColum();
-		_setGridiLine();
+		// _setGridiLine();
 		_setAccordeon();
+		_setSelect();
 	};
 
   // ------- Переключение флагман/бюджет --------//
@@ -144,42 +145,15 @@ var myModule = (function () {
 		});
 	}
 
+  // ------------------Селект------------------- //
 
-  // -----------Переключение вида--------------- //
-
-  var _setGridiLine = function(){
-		$('.sort__view-link').on('click', function(e){
-			e.preventDefault();
-			_changeState($(this));
+	var _setSelect = function () {
+		$(".sort__select-elem").select2({
+			minimumResultsForSearch: Infinity
 		});
 	}
 
-	var _previousClass = '';
-
- 	var _changeState = function($this){
- 		var 
- 			item = $this.closest('.sort__view-item'),
- 			view = item.data('view'),
- 			listOfItems = $('#products-list'),
- 			modificationPrefix = 'products__list_',
- 			classOfViewState = modificationPrefix + view;
-
- 		if (_previousClass == '') {
- 			_previousClass.listOfItems.attr('class');
- 		}
-
- 		_changeActiveClass($this);
- 		listOfItems.attr('class', _previousClass + '' + classOfViewState);
- 	};
-
- 	var _changeActiveClass = function($this){
- 		$this.closest('.sort__view-item').addClass('active');			
- 		$this.siblings().removeClass('active');
- 	}
-
-
  // -------------- End myModule --------------//
-
 
 
 	return {
@@ -189,3 +163,59 @@ var myModule = (function () {
 })();
 
 myModule.init();
+
+
+
+
+
+  // -----------Переключение вида--------------- //
+
+var ViewStateChange =(function(){
+	
+	var _previousClass = '';
+
+	var _changeState = function($this){
+		 
+		var	item = $this.closest('.sort__view-item'),
+				view = item.data('view'),
+				listOfItems = $('#products-list'),
+				modificationPrefix = 'products__list_',
+				classOfViewState = modificationPrefix + view;
+
+		if (_previousClass == '') {
+			_previousClass.listOfItems.attr('class');
+		}
+
+		_changeActiveClass($this);
+		listOfItems.attr('class', _previousClass + ' ' + classOfViewState);
+	};
+
+	var _changeActiveClass = function($this){
+		$this.closest('.sort__view-item').addClass('active');			
+		$this.siblings().removeClass('active');
+	}
+
+	return {
+		init: function(){
+			$('.sort__view-link').on('click', function(e){
+				e.preventDefault();
+				_changeState($(this));
+			});
+		}
+	}
+
+}());
+
+
+$(document).ready(function(){	
+	ViewStateChange.init();
+});
+
+
+$('.sort__view-icon').on('click', function(e){
+	e.preventDefault();
+  $(".sort__view-icon").removeClass('active');
+  $(this).addClass('active');
+});
+
+

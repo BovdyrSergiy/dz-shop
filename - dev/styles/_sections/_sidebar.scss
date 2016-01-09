@@ -60,6 +60,26 @@
 
 .filter__title {
 	margin-bottom: 18px;
+	padding-right: 30px;
+	position: relative;
+
+	&:hover {
+		&:after {
+			content: "";
+			@include get-sprite($select-tr-map, to-top);
+			position: absolute;
+			top: 7px;
+			right: 10px;
+		}
+	}
+
+	&.active {
+		&:hover {
+			&:after {
+				@include get-sprite($select-tr-map, to-bottom);
+			}
+		}
+	}
 }
 
 .filter__choose-item {

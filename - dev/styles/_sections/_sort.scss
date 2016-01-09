@@ -90,8 +90,12 @@ $views-map: sprite-map('icons/views/*.png', $spacing: 50px);
 					@include get-sprite($views-map, $hover-icon);
 				}
 			}
-			&.active {
 
+			&.active {
+				&:after {
+					$hover-icon: $item + '-hover';	
+					@include get-sprite($views-map, $hover-icon);
+				}
 			}
 		}
 	}

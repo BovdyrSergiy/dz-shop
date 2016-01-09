@@ -21,7 +21,7 @@ $select-tr-map: sprite-map('icons/select-tr/*.png', $spacing: 50px);
 		}
 	}
 
-	.select2-selection--open {
+	&.select2-container--open {
 		b {
 			@include get-sprite($select-tr-map, to-top);
 		}
@@ -40,14 +40,15 @@ $select-tr-map: sprite-map('icons/select-tr/*.png', $spacing: 50px);
 		@include border-radius(5px);
 		background: #ffffff;
 
-		.select2-result__option {
+		.select2-results__option {
 			background: #ffffff;
 			font-size: 14px;
 			line-height: 16px;
 			@include open-sans(light);
 			color: #7f7f7f;
+			@include border-radius(5px);
 
-			&.select2-result__option--highlighted {
+			&.select2-results__option--highlighted {
 				color: #333333 !important;
 				@include open-sans(semibold);
 			}

@@ -59,14 +59,14 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 }
 
 .header__right {
-	width: 483px;
+	width: 463px;
 	float: right;
 }
 
 .address {
 	@include inlineblock(middle);
-	margin-right: 80px;
-	font-size: 14px;
+	margin-right: 81px;
+	font-size: 15px;
 	line-height: 24px;
 
 	&:before {
@@ -119,7 +119,7 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 .search {
 	float: left;
 	margin-right: 48px;
-	margin-left: 50px;
+	margin-left: 58px;
 }
 
 .menu {
@@ -140,7 +140,7 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 
 .menu__item {
 	@include inlineblock();
-	margin-left: 28px;
+	margin-left: 30px;
 
 	&:first-child {
 		margin-left: 0;
@@ -154,6 +154,7 @@ $socials-map: sprite-map('icons/socials/*.png', $spacing: 70px, $layout: horizon
 	width: 259px;
 	margin-right: -7px;
 	outline: none;
+	font-size: 14px;
 }
 
 .search__form-submit {

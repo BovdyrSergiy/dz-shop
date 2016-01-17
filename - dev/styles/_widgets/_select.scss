@@ -1,7 +1,7 @@
 $select-tr-map: sprite-map('icons/select-tr/*.png', $spacing: 50px);
 
 .select2-container {
-	width: 160px !important;
+	width: 145px !important;
 
 	* {
 		outline: none !important;
@@ -28,7 +28,7 @@ $select-tr-map: sprite-map('icons/select-tr/*.png', $spacing: 50px);
 	}
 
 	.select2-selection__rendered {
-		font-size: 12px;
+		font-size: 13px;
 		@include open-sans(light);
 		color: #7f7f7f;
 	}

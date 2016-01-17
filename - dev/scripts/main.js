@@ -165,10 +165,8 @@ var myModule = (function () {
 myModule.init();
 
 
-
-
-
   // -----------Переключение вида--------------- //
+
 
 var ViewStateChange =(function(){
 	
@@ -183,7 +181,7 @@ var ViewStateChange =(function(){
 				classOfViewState = modificationPrefix + view;
 
 		if (_previousClass == '') {
-			_previousClass.listOfItems.attr('class');
+			_previousClass = listOfItems.attr('class');
 		}
 
 		_changeActiveClass($this);
@@ -191,8 +189,9 @@ var ViewStateChange =(function(){
 	};
 
 	var _changeActiveClass = function($this){
-		$this.closest('.sort__view-item').addClass('active');			
-		$this.siblings().removeClass('active');
+		$this
+			.closest('.sort__view-item').addClass('active')
+			.siblings().removeClass('active');
 	}
 
 	return {
@@ -217,5 +216,3 @@ $('.sort__view-icon').on('click', function(e){
   $(".sort__view-icon").removeClass('active');
   $(this).addClass('active');
 });
-
-

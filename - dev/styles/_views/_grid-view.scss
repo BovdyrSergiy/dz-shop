@@ -100,30 +100,31 @@
 	}
 
 	.products__option-item {
-		@include clearfix();
 		color: $black;
 		display: block;
 	}
 
 	.products__options-item_colored {
-		background: $grey;
+		@include clearfix();
+
+		&:nth-child(odd) {
+			background: $grey;
+		}
 	}
 
 	.products__options-key {
-		display: inline-block;
 		float: left;
 		min-width: 50%;
 		text-align: left;
 		padding: 3px 3px;
-    line-height: 1;
+		line-height: 1;
 	}
 
 	.products__options-value {
-		display: inline-block;
 		float: right;
 		max-width: 50%;
 		text-align: right;
 		padding: 3px 3px;
-    line-height: 1;
+		line-height: 1;
 	}
 }

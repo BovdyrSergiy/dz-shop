@@ -92,4 +92,13 @@
 
 .footer__copyright {
 	padding: 8px 0;
+
+	.link-avtor {
+		color: #fff;
+		text-decoration: none;
+
+		&:hover {
+			border-bottom: 1px solid #fff;
+		}
+	}
 }
